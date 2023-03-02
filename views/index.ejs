@@ -1,0 +1,23 @@
+<%- include('includes/header') %>
+    <%- include('includes/navigation') %>
+        <main>
+            <% if(notes.length> 0) { %>
+                <div class="grid">
+                    <% notes.forEach(function(note) { %>
+                        <div class="card">
+                            <h2>
+                                <%= note %>
+                            </h2>
+                        </div>
+                        <% }); %>
+                </div>
+                <% } else { %>
+                    <div class="card">
+                        <h2>No notes found</h2>
+                        <p>Click the button below to add a note</p>
+                        <a href="/add-note" class="btn">Add Note</a>
+                    </div>
+                    <% } %>
+        </main>
+
+        <%- include('includes/footer') %>

@@ -1,6 +1,9 @@
+let notes = [];
+
 exports.getNotes = (req, res, next) => {
     res.render('index.ejs', {
-        notes: notes
+        notes: notes,
+        message: req.query.message
     })
 };
 
@@ -9,8 +12,12 @@ exports.getAddNote = (req, res) => {
 };
 
 exports.postNote = (req, res) => {
-    console.log(req.body.title);
     notes.push(req.body.title);
-    console.log(notes);
     res.redirect('/');
+}
+
+exports.deleteNote = (req, res) => {
+    const title = req.query.title;
+    notes = notes.filter(note => note !== title);
+    res.redirect('/?message=Note Deleted');
 }
